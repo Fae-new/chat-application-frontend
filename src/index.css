@@ -1,0 +1,319 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body{
+  margin: 0;
+  background-color: rgb(180, 171, 162);
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+}
+
+/*///////////////
+
+auth  
+
+
+///////////////////////////////*/
+
+.error{
+  color:red;
+   text-align: center;
+    font-size:15px;
+     font-weight: bold
+}
+
+.form input {
+  height: 30px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(201, 199, 199);
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  text-indent: 15px;
+
+}
+
+.form label {
+  font-weight: bold;
+  color: rgb(29, 28, 28);
+
+}
+
+.form {
+  width: 76%;
+  margin-left: 12.5%;
+}
+
+
+.form h1 {
+  margin-bottom: -10px;
+}
+
+.subtext {
+  margin-left: 10px;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.form ::placeholder {
+  padding-left: 10px;
+}
+
+.form-btn {
+  outline: none;
+  width: 60%;
+  background-color: #ffd700;
+  padding: 5px;
+  margin-left: 20%;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* //////////////////
+homepage
+
+
+
+//////////////////////////// */
+
+.home{
+  display: flex;
+  width: 100%;
+}
+.home img{
+  cursor: pointer;
+}
+.chats{
+  border-right: 1px solid black;
+  height: 100vh;
+ overflow-y: scroll;
+ min-width: 380px;
+ width: 30%;
+ background-color: #ffffff;
+ 
+}
+
+.chat{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid rgb(177, 177, 177);
+  cursor: pointer;
+}
+
+.chat:hover{
+  background-color: rgb(233, 232, 232);
+}
+
+
+ .profilePic{
+  border-radius: 50%;
+  margin: 0px 10px;
+  width: 50px;
+}
+.chat .previewChat{
+line-height: 0px;
+
+}
+
+.previewChat{
+  width: 100%;
+}
+
+.previewChat div{
+  display: flex;
+   align-items:center;
+   justify-content: space-between;
+    width: 95%;
+}
+
+.currentChat{
+  width: 70%;
+  height: 100vh;
+ display: flex;
+ flex-direction: column;
+
+}
+
+
+
+.userNav{
+  height: 50px;
+  background-color: rgb(182, 180, 180);
+  display: flex;
+  align-items: center;
+}
+
+.searchBar{
+width: 97%;
+border: none;
+margin-left: 1%;
+height: 35px;
+text-indent: 10px;
+outline: 1px solid rgb(223, 220, 220);
+border-radius: 2px;
+
+background-color:white;
+}
+
+.chatHeader{
+  display: flex;
+  height: 50px;
+  background-color: rgb(182, 180, 180);
+  align-items: center;
+
+}
+
+
+.chatHeader div:nth-of-type(1){
+
+
+ padding-left: 30px;
+flex-grow: 1;
+
+  }
+
+.chatHeader div:nth-of-type(1) p:nth-of-type(1){
+ 
+font-weight: bold;
+font-size: 18px;
+line-height: 5px;
+
+}
+
+.chatHeader div:nth-of-type(1) p:nth-of-type(2){
+ 
+
+  font-size: 13px;
+  line-height: 5px;
+  }
+
+  .chatHeader div:nth-of-type(2){
+
+display: flex;
+margin-right: 50px;
+align-items: center;
+justify-content: space-between;
+width: 60px;
+   
+     }
+
+
+.inputDiv{
+width: 100%;
+  background-color: rgb(233, 232, 232);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+
+
+  
+
+ 
+}
+.inputDiv form{
+  width: 80%;
+}
+.inputDiv input{
+width: 100%;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  text-indent: 30px;
+  
+
+}
+
+.inputDiv input:focus{
+ 
+    outline: 1px solid gray;
+   
+  
+  }
+  .inputDiv img{
+    width: 25px;
+  }
+
+  .chatHeader div:nth-of-type(2) img{
+    width: 20px;
+  }
+
+/* ///// 
+text body formatring
+/////*/
+
+.msgDiv{
+display: flex;
+align-items: center;
+margin-bottom: -20px;
+width:fit-content;
+justify-content: space-between;
+border-radius: 5px;
+min-width: 100px;
+max-width: 300px;
+height: fit-content;
+
+}
+
+.sentMsg{  
+margin-left: auto;
+margin-right: 10px;
+}
+.recMsg{
+margin-left: 10px;
+}
+
+.msgBody{
+  font-weight: 540;
+  font-size: 15px;
+  word-wrap: break-word;
+min-width: 100px;
+border-radius: 5px;
+
+ padding-right: 35px;
+
+ padding: 5px 35px 12px 5px;
+
+ 
+}
+
+.time{
+align-self: flex-end;
+  font-size: 11px;
+  color: grey;
+
+margin-left: -35px;
+  
+
+  
+}
+
