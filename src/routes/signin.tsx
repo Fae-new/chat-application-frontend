@@ -18,13 +18,16 @@ const Signin = () => {
   const emailRef = useRef() as React.MutableRefObject<HTMLInputElement>
   const [error, setError] = useState('')
 
-  console.log(document.body.clientWidth);
+console.log( import.meta.env.VITE_API_BASE_URL)
+  
+
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = { email: emailRef.current.value, password: passwordRef.current.value }
 
+
     try {
-      const res = await axios.post(import.meta.env.VITE_API_BASE_URL+'/users/login', formData)
+      const res = await axios.post(import.meta.env.VITE_LOGIN_URL, formData)
       const data = await res.data
       console.log(data);
  

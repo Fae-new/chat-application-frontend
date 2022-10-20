@@ -53,7 +53,7 @@ if(minutes.length===1)minutes='0'+minutes
     dispatch(addMessage(newMessage))
  setTimeout(()=>{window.location.href='#'+newMessage.date},50)
 input.current.value=''
-    const res = await axios.post(import.meta.env.VITE_API_BASE_URL+'/contacts/sendmessage', { senderid: newMessage.senderId, recieverid: Chat[0].friendId,chatid:newMessage.chatId,text:newMessage.text,date:newMessage.date })
+    const res = await axios.post(import.meta.env.VITE_SEND_MESSAGE, { senderid: newMessage.senderId, recieverid: Chat[0].friendId,chatid:newMessage.chatId,text:newMessage.text,date:newMessage.date })
     const data = await res.data
     if(data.msg==='message sent'){
       console.log('saved to db');

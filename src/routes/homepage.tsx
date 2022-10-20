@@ -3,14 +3,14 @@ import ChatList from '../components/Added-contacts'
 import { Outlet,Route } from 'react-router-dom'
 import socket from '../socket/socket'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { useWindow } from '../hooks/useWidth'
 
 
 const Homepage = () => {
 
   const chats=useAppSelector((state)=>state.chat)  
   const user=useAppSelector((state)=>state.user)
-  const dispatch=useAppDispatch()
-
+const {width}=useWindow()
   useEffect(()=>{
     chats.forEach((chat)=>{
       socket.emit('join_room',chat.chatId)
@@ -28,7 +28,7 @@ socket.emit('join_room',user.userInfo?.uid)
   return (
     <>
     <div className='home'>
- <ChatList/>
+{width>768?<ChatList/>:null}
   <Outlet />
     </div>
     </>

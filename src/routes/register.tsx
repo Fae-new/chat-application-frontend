@@ -30,7 +30,7 @@ e.preventDefault()
 try {
   
 
-const res= await axios.post(import.meta.env.VITE_API_BASE_URL+'/users/register',
+const res= await axios.post(import.meta.env.VITE_REGISTER_URL,
 {username:usernameRef.current.value,
 password:passwordRef.current.value,
 email:emailRef.current.value

@@ -21,7 +21,7 @@ chatMessages=messagesArray.filter((message)=>message.chatId===chatId)
 
 
     return (
-        <div style={{ flexGrow: '1', overflowY: 'scroll', paddingInline: '40px' }}>
+        <div className='chatField' >
 
             <p className='chatStarterMessage'>This chat is encrypted from end to end</p>
             {chatMessages?.length!==0? chatMessages?.map((item, index) => {

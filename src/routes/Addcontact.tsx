@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 import { userType } from '../data'
 import { addChat } from '../redux/chatsSlice'
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +26,7 @@ const Addcontact = () => {
     }
 
     try {
-      const res = await axios.post(import.meta.env.VITE_API_BASE_URL + '/contacts/finduser', { username: searchValue.current.value })
+      const res = await axios.post(import.meta.env.VITE_FIND_USER, { username: searchValue.current.value })
       const data = await res.data
       if (data.length === 0) {
         setError('No Users Found')
@@ -53,7 +54,7 @@ const Addcontact = () => {
 
     try {
 
-      const res = await axios.post(import.meta.env.VITE_API_BASE_URL + '/contacts', { senderid: user.userInfo?.uid, recieverid: e.currentTarget.id })
+      const res = await axios.post(import.meta.env.VITE_ADD_CONTACT, { senderid: user.userInfo?.uid, recieverid: e.currentTarget.id })
       const data = await res.data
       dispatch(addChat(data.chat.friendInfo))
       socket.emit('add_contact', { contactInfo: data.chat.userInfo, id: data.chat.friendInfo.friendId })
@@ -69,7 +70,7 @@ const Addcontact = () => {
 
   return (
     <div className='addContactDiv'>
-      <ArrowBackIcon sx={{ alignSelf: 'flex-start', marginLeft: '50px', marginTop: '-30px', marginBottom: '50px' }} onClick={() => { navigate('/') }} />
+      <ArrowBackIcon className='backIcon' onClick={() => { navigate('/') }} />
       <input type="text" ref={searchValue} placeholder='Search by Username' onChange={() => setError('')} /> <br />
       <button onClick={searchUser}>Search</button>
 
@@ -77,7 +78,7 @@ const Addcontact = () => {
       {foundUsers.map((user, index) => {
         return <div key={index} className='foundContact'>
           <h3 ref={nameRef} >{user.userName}</h3>
-          {/* <button onClick={addFriend} id={user.uid}>add as friend</button> */}
+   
           <img src="https://cdn-icons-png.flaticon.com/512/748/748137.png" id={user.uid} onClick={addFriend} style={{ width: '25px' }} alt="" />
 
         </div>
