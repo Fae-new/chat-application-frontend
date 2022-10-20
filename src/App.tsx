@@ -11,16 +11,19 @@ import Addcontact from './routes/Addcontact'
 import socket from './socket/socket'
 import { addMessage } from './redux/messagesSlice'
 import { addChat } from './redux/chatsSlice'
-import { useAppDispatch,useAppSelector } from './redux/hooks'
+import { useAppDispatch} from './redux/hooks'
+import { chatsdb, messsage } from './data'
+import OpeningPage from './routes/Opening-page'
+
 
 function App() {
 const dispatch=useAppDispatch()
 
 
   useEffect(():(()=>void)=>{
-    const eventListener=(data:any)=>{
+    const eventListener=(data:{message:messsage,chatId:string})=>{
        dispatch(addMessage(data.message)) 
-       console.log(data.message);  
+     
      }
 
  
@@ -31,7 +34,7 @@ const dispatch=useAppDispatch()
  },[socket])
 
  useEffect(():(()=>void)=>{
-  const eventListener=(data:any)=>{
+  const eventListener=(data:chatsdb)=>{
      dispatch(addChat(data)) 
    }
 
@@ -43,19 +46,20 @@ return  ()=>socket.off('collect_contact',eventListener)
 
 
 
+
   return (
-    <div className="App">
+    <div className="App" >
  <Routes>
-<Route element={<ProtectedRoutes/>}>
+{/* <Route element={<ProtectedRoutes/>}> */}
 <Route path='/' element={<Homepage/>}>
 
-<Route path='/' element={<h1>Click a contact to start chatting</h1>}></Route>
+<Route path='/' element={<OpeningPage/>}></Route>
 <Route path=':chatId' element={<Chat/>}/>
 <Route path='addcontact' element={<Addcontact/>}></Route>
 
 </Route>
 
-</Route>
+{/* </Route> */}
   <Route path='signin' element={<Signin/>}/>
   <Route path='register' element={<Register/>}/>
   <Route path='*' element={<h1>page not found</h1>}/>

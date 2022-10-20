@@ -3,11 +3,13 @@ import userReducer from "./userSlice";
 import chatReducer from './chatsSlice'
 import messagesReducer from "./messagesSlice";
 
+
 const  store= configureStore({
     reducer:{
         user:userReducer,
         chat:chatReducer,
-        messages:messagesReducer
+        messages:messagesReducer,
+       
     }
 })
 

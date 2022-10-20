@@ -21,8 +21,8 @@ const Chat = () => {
     }
 
 
-    return (
 
+    return (
         <div className='currentChat'>
 
             <ChatHeader specificChat={specificChat}/>
@@ -30,8 +30,6 @@ const Chat = () => {
             <InputField specificChat={specificChat}/>
 
         </div>
-
-
     )
 }
 

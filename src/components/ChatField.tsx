@@ -16,24 +16,19 @@ const messagesArray=useAppSelector((state)=>state.messages)
 let chatMessages=null
 if(messagesArray){
 chatMessages=messagesArray.filter((message)=>message.chatId===chatId)
-console.log(chatMessages);
-;
-
 
 }
 
 
-
-
-
-
     return (
-        <div style={{ flexGrow: '1', overflowY: 'scroll', paddingInline: '60px' }}>
+        <div style={{ flexGrow: '1', overflowY: 'scroll', paddingInline: '40px' }}>
+
+            <p className='chatStarterMessage'>This chat is encrypted from end to end</p>
             {chatMessages?.length!==0? chatMessages?.map((item, index) => {
                 return (
-                    <div key={index} id={''+item.time} className={item.sentUid === user?.uid ? 'sentMsg msgDiv' : 'recMsg msgDiv'}>
-                        <p className='msgBody' style={item.sentUid === user?.uid ? { backgroundColor: ' rgb(155, 247, 155)' } : { backgroundColor: 'white' }}> {item.text} </p>
-                        <p className='time'>{item.time}</p>
+                    <div key={index} id={item.date} className={item.senderId === user?.uid ? 'sentMsg msgDiv' : 'recMsg msgDiv'}>
+                        <p className='msgBody' style={item.senderId === user?.uid ? { backgroundColor: ' #0ff4c6' } : { backgroundColor: 'white' }}> {item.text} </p>
+                        <p className='time'>{item.date}</p>
 
                     </div>
                 )

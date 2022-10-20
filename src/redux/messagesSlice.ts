@@ -4,7 +4,7 @@ import { messsage } from "../data";
 const initialState: [] | messsage[] = []
 
 
-export const messageSlice = createSlice({
+ const messageSlice = createSlice({
     name: 'messageSlice',
     initialState: initialState,
     reducers: {

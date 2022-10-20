@@ -1,8 +1,8 @@
 
 export interface messsage{
     text:string;
-    sentUid:string;
-    time:string;  
+    senderId:string;
+    date:string;  
     chatId:string;
 }
 
