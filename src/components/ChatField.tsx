@@ -32,7 +32,7 @@ chatMessages=messagesArray.filter((message)=>message.chatId===chatId)
 
                     </div>
                 )
-            }):<p> start chatting with this person</p>}
+            }):<p> </p>}
         </div>
     )
 }

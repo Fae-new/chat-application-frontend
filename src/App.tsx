@@ -36,10 +36,11 @@ const {width}=useWindow()
   const eventListener=(data:chatsdb)=>{
      dispatch(addChat(data)) 
    }
-
 socket.on('collect_contact',eventListener)
 
-return  ()=>socket.off('collect_contact',eventListener)
+return  (()=>socket.off('collect_contact',eventListener)
+
+)
 
 },[socket])
 

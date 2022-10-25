@@ -4,14 +4,10 @@ export interface messsage{
     senderId:string;
     date:string;  
     chatId:string;
-}
+//     read:boolean;
+ }
 
-// export interface chatType {
-//     chatId: number;
-//     name: string;
-//     sentUid:string;
-//     messages: Message[];
-// }
+
 
 export interface chatsdb{
   friendName:string ; 
@@ -37,19 +33,19 @@ messages:messsage[]
 
 
 
-export class Message{
-text:string;
-sentUid:string
-time:Date;
-chatId:string
+// export class Message{
+// text:string;
+// sentUid:string
+// time:Date;
+// chatId:string
   
-    constructor(text:string,sentUid:string,time:Date,chatId:string) {
-    this.text=text,
-    this.sentUid=sentUid,
-    this.time=time,
-this.chatId=chatId
-    }
-}
+//     constructor(text:string,sentUid:string,time:Date,chatId:string) {
+//     this.text=text,
+//     this.sentUid=sentUid,
+//     this.time=time,
+// this.chatId=chatId
+//     }
+// }
 
 
 

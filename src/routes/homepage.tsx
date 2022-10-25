@@ -20,7 +20,7 @@ const {width}=useWindow()
 
     useEffect(()=>{
 socket.emit('join_room',user.userInfo?.uid)
-
+// socket.emit('set_status',{online:true,uid:user.userInfo?.uid})
 
     },[])
 

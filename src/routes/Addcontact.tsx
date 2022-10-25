@@ -2,11 +2,11 @@ import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
 import { userType } from '../data'
 import { addChat } from '../redux/chatsSlice'
 import { useNavigate } from 'react-router-dom';
 import socket from '../socket/socket'
+import Loader from '../components/loader';
 
 const Addcontact = () => {
   const searchValue = useRef() as React.MutableRefObject<HTMLInputElement>
@@ -17,11 +17,16 @@ const Addcontact = () => {
   const user = useAppSelector((state) => state.user)
   const contacts = useAppSelector((state) => state.chat)
   const nameRef = useRef() as React.MutableRefObject<HTMLInputElement>
-
+  const [loading, setLoading] = useState(false)
 
   const searchUser = async () => {
 
+    setError('')
+    setLoading(true)
+setFounduser([])
+
     if (searchValue.current.value.trim().length === 0) {
+      setLoading(false)
       return setError('Input a search term')
     }
 
@@ -29,12 +34,17 @@ const Addcontact = () => {
       const res = await axios.post(import.meta.env.VITE_FIND_USER, { username: searchValue.current.value })
       const data = await res.data
       if (data.length === 0) {
-        setError('No Users Found')
+        setLoading(false)
+        return setError('No Users Found')
       }
+
       setFounduser(data)
+      setLoading(false)
 
     } catch (error) {
       console.log(error);
+      setLoading(false)
+      return setError('There was an error, try again later')
 
     }
 
@@ -42,6 +52,7 @@ const Addcontact = () => {
 
   const addFriend = async (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
 
+    setLoading(true)
     if (user.userInfo?.uid === e.currentTarget.id) {
       return setError('You want to chat with yourself ?')
 
@@ -58,24 +69,29 @@ const Addcontact = () => {
       const data = await res.data
       dispatch(addChat(data.chat.friendInfo))
       socket.emit('add_contact', { contactInfo: data.chat.userInfo, id: data.chat.friendInfo.friendId })
-
-
+navigate('/')
+setLoading(false)
     } catch (error) {
       console.log(error);
-
+      setLoading(false)
+      return setError('There was an error, try again later')
     }
 
   }
+
+
+
+  if(loading) return <Loader height='100vh'/>
 
 
   return (
     <div className='addContactDiv'>
       <ArrowBackIcon className='backIcon' onClick={() => { navigate('/') }} />
       <input type="text" ref={searchValue} placeholder='Search by Username' onChange={() => setError('')} /> <br />
-      <button onClick={searchUser}>Search</button>
+      <button onClick={searchUser} style={{cursor:'pointer',marginBottom:'20px'}}>Search</button>
+     
 
-
-      {foundUsers.map((user, index) => {
+      {   foundUsers.map((user, index) => {
         return <div key={index} className='foundContact'>
           <h3 ref={nameRef} >{user.userName}</h3>
    
@@ -85,6 +101,8 @@ const Addcontact = () => {
 
 
       })}
+
+
       <p style={{ color: 'red', fontWeight: 'bold', fontSize: '15px' }}>{error}</p>
     </div>
   )
